@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Cara,zzxxcclloopp@gmail.com"><title> · Cara's Blog</title><meta name="description" content="// 17/9/23 By Cara
+
+// 对字符串和数字排序
+const compare = (a, b) =&gt; {
+	if (a === b) {
+		return 0
+	}
+	if (typeof a === typeof b) {
+		return  a &lt; b ? -1 : 1
+	}
+	"><meta name="keywords" content="hexo, HTML, CSS, Javascript, Node.js"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="http://ordjgqxuv.bkt.clouddn.com/nike-girl/IMG_2930.JPG" style="width:127px;"><h3 title=""><a href="/">Cara's Blog</a></h3><div class="description"><p>咸鱼的博客和学习笔记📒 'Lok-Tar Ogar!'.</p></div></div></div><ul class="social-links"><li><a href="http://github.com/Caraws"><i class="fa fa-github"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://ordjgqxuv.bkt.clouddn.com/cara_30/WechatIMG8.jpeg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a></a></h3></div><div class="post-content">// 17/9/23 By Cara
+
+// 对字符串和数字排序
+const compare = (a, b) => {
+	if (a === b) {
+		return 0
+	}
+	if (typeof a === typeof b) {
+		return  a < b ? -1 : 1
+	}
+	return typeof a < typeof b ? -1 :1
+}
+
+let array = ['bb', 'aa', 2, 'cc', 3, 1, 7];
+
+console.log(array.sort(compare())); // [ 1, 2, 3, 7, 'aa', 'bb', 'cc' ]
+
+
+/**
+ * 不稳定性排序
+ * 让对象数组排序
+ * @param {String} name 要排序的属性
+ */
+
+// 不稳定性：排序后两个相等键值的顺序和排序前的顺序相同
+const by = name => {
+	// o/p 每组相比较的数据
+	return (o, p) => {
+		let a, b;
+
+		if(o && p && typeof o === 'object' && typeof p === 'object') {
+			a = o[name];
+			b = p[name];
+			// 全等时
+			if (a === b) {
+				return 0
+			}
+			// 同类型
+			if (typeof a === typeof b) {
+				return a < b ? -1 : 1 
+			}
+			// 不同类型
+			return typeof a < typeof b ? -1 : 1
+		}else {
+			console.log('排序失败')
+		}
+	}
+}
+
+let s = [
+	{first: 'Joe', last: 'DeRita'},
+	{first: 'Moe', last: 'Howard'},
+	{first: 'Joe', last: 'Besser'},
+	{first: 'Shemp', last: 'Howard'},
+	{first: 'Larry', last: 'Fine'},
+	{first: 'Curly', last: 'Howard'},
+]
+
+console.log(s.sort(by('first')).sort('last'));
+/*
+[ 
+	{ first: 'Curly', last: 'Howard' },
+	{ first: 'Joe', last: 'DeRita' },
+	{ first: 'Joe', last: 'Besser' },
+	{ first: 'Larry', last: 'Fine' },
+	{ first: 'Moe', last: 'Howard' },
+	{ first: 'Shemp', last: 'Howard' }  
+]
+ */
+
+
+
+/**
+ * 稳定性排序
+ * @param {String} name 要排序的属性
+ * @param {Object} minor 次要比较函数
+ */
+// 
+// 让函数接收两个参数, 当第一个函数相等时
+// 由第二个参数再次比较, 第二个次要比较函数可选
+const betterBy = (name, minor) => {
+	return (o, p) => {
+		let a, b;
+		if (o && p && typeof o === 'object' && typeof 'object') {
+			a = o[name];
+			b = p[name];
+			if (a === b) {
+				// 用次要比较函数再次对比
+				return typeof minor === 'function' ? minor(o, p) : 0
+			}
+			if (typeof a === typeof b) {
+				return a < b ? -1 : 1
+			}
+			return typeof a < typeof b ? -1 : 1
+		}else {
+			console.log('排序失败');
+		}
+	}
+
+}
+
+let a = [
+	{first: 'Joe', last: 'DeRita'},
+	{first: 'Moe', last: 'Howard'},
+	{first: 'Joe', last: 'Besser'},
+	{first: 'Shemp', last: 'Howard'},
+	{first: 'Larry', last: 'Fine'},
+	{first: 'Curly', last: 'Howard'},
+];
+
+console.log(a.sort(by('last',by('first'))));
+/*[ 
+	{ first: 'Joe', last: 'Besser' },
+	{ first: 'Joe', last: 'DeRita' },
+	{ first: 'Larry', last: 'Fine' },
+	{ first: 'Moe', last: 'Howard' },
+	{ first: 'Shemp', last: 'Howard' },
+	{ first: 'Curly', last: 'Howard' } 
+]
+ */
+
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-09-23</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://yoursite.com/2017/09/23/JavaScript-方法集/methods/,Cara's Blog,,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/09/30/JavaScript-方法集/methods/" title="" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/06/11/cookie-localStorage-and-sessionStorage/" title="cookie localStorage and sessionStorage" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
