@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Cara,zzxxcclloopp@gmail.com"><title> · Cara's Blog</title><meta name="description" content="/**
+ *  继承函数化测试代码
+ * @author Cara 17/9/18
+ */
+
+// 构造器
+const mammal = spec =&gt; {
+	let that = {};
+
+	that.get_name = _ =&gt; spec.name;
+	that.says = _ =&gt; spe"><meta name="keywords" content="hexo, HTML, CSS, Javascript, Node.js"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="http://ordjgqxuv.bkt.clouddn.com/nike-girl/IMG_2930.JPG" style="width:127px;"><h3 title=""><a href="/">Cara's Blog</a></h3><div class="description"><p>咸鱼的博客和学习笔记📒 'Lok-Tar Ogar!'.</p></div></div></div><ul class="social-links"><li><a href="http://github.com/Caraws"><i class="fa fa-github"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="http://ordjgqxuv.bkt.clouddn.com/cara_30/WechatIMG8.jpeg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a></a></h3></div><div class="post-content">/**
+ * <javascript语言精粹> 继承函数化测试代码
+ * @author Cara 17/9/18
+ */
+
+// 构造器
+const mammal = spec => {
+	let that = {};
+
+	that.get_name = _ => spec.name;
+	that.says = _ => spec.saying || 'Hi';
+
+	return that
+}
+
+let myMammal = mammal({name: 'Cara'});
+
+console.log(myMammal.says()) // 'Hi'
+
+
+// 构造器2
+const cat = spec => {
+	spec.saying = spec.saying || 'meow';
+
+	// 此时 that 已经包含: get_name 和 says 方法
+	let that = mammal(spec);
+
+	that.purr = n => {
+		let str = '';
+
+		for (let i = 0; i < n; i++) {
+			if (str) {
+				str += '-';
+			}
+			str += 'r';
+		}
+		return str
+	};
+	that.get_name = n => {
+		return n || "i dont't have name"
+	};
+
+	return that
+}
+
+let myCat = cat({name: 'Henrietta'});
+
+// i dont't have name
+console.log(myCat.get_name())
+
+// 这个时候 cat 还不能访问父类方法的能力
+// 所以超类 super 还是有必要的
+
+// 先扩展两个方法
+// 这个方法不能用箭头函数来定义, 否则 this 指向的window
+// 这里 this 需要的是被调用的对象
+Function.prototype.method =  function (name, fn) {
+	this.prototype[name] = fn;
+	return this
+}
+
+// 定义调用父类的函数
+Object.method('superior', function (name) {
+	var that = this,
+        method = that[name];
+    return n => {
+    	console.log(n)
+        return method.call(that, n);
+    };
+})
+
+// 来试试调用父类
+const coolCat = spec => {
+	let that = cat(spec);
+	let	super_get_name = that.superior('get_name');
+
+	// n 给父类方法传参
+	that.get_name = n => {
+        return 'like ' + super_get_name.call(this, n) + ' baby';
+    };
+
+	return that
+}
+
+let myCoolCat = coolCat({name: 'Bix', saying: 'Hi'});
+
+let name = myCoolCat.get_name('this cat function');
+
+console.log(name)</javascript语言精粹></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-09-19</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,https://yoursite.com/2017/09/19/Inheritance-继承/inheritance/,Cara's Blog,,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/09/23/JavaScript-方法集/methods/" title="" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/06/11/cookie-localStorage-and-sessionStorage/" title="cookie localStorage and sessionStorage" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
