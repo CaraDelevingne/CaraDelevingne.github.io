@@ -12,7 +12,7 @@
 <p>在文档顶部声明 <code>DOCTYPE</code> 就是为了让浏览器使用 W3C标准盒模型, 但是在 IE5/ IE6 下依然是 IE 标准盒模型. 当然通过<code>box-sizing</code>属性可以在两者之间转换.</p>
 <h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><ol>
 <li><p>两个垂直方向相邻的块级元素相遇时, 外边距会合并且取值两者较大值的 <code>margin</code> 作为外边距.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">解决方案:</div><div class="line"> *&#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span>; </div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">解决方案:</span><br><span class="line"> *&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>; </span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>margin 出轨…<br>当父元素没有 <code>border</code> 边框时, 第一个子元素添加 <code>margin-top</code> 会超出父元素, 相同最后一个子元素添加 <code>margin-bottom</code> 也同样会超出父元素, 如下图: </p>
 </li>
@@ -28,14 +28,22 @@
 <p>解决方案有四种: </p>
 <blockquote>
 <ol>
-<li><p>给父元素添加 border.</p>
-</li>
-<li><p>给父元素添加 padding.</p>
-</li>
-<li><p>给父元素添加 overflow: hidden.</p>
-</li>
-<li><p>给父元素添加伪类. (最佳)</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.parent</span> &#123;</div><div class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</div><div class="line">    <span class="attribute">display</span>: table;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>给父元素添加 border.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>给父元素添加 padding.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>给父元素添加 overflow: hidden.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>给父元素添加伪类. (最佳)<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </blockquote>

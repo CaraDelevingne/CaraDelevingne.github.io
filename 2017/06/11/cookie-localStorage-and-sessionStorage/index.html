@@ -10,15 +10,14 @@
 <li>默认 Cookie 在浏览器会话结束时将所有 Cookie删除, 也可以自己设置删除时间</li>
 </ul>
 <h4 id="JavaScript-中的Cookie"><a href="#JavaScript-中的Cookie" class="headerlink" title="JavaScript 中的Cookie"></a>JavaScript 中的Cookie</h4><ul>
-<li><p>document.cookie 可以设置一个新的 cookie 字符串, key 和 value是必须的</p>
+<li>document.cookie 可以设置一个新的 cookie 字符串, key 和 value是必须的</li>
+</ul>
 <blockquote>
 <p><code>document.cookie = &#39;name=Cara&#39;;</code></p>
 </blockquote>
-<pre><code>由于每次客户端向服务器发送请求的时候都会发送这个 cookie , 所以最好每次设置的时候都用`encodeURI()`进行编码, `decodeURI()`来解码
-</code></pre></li>
-</ul>
-<h3 id="2-localStorage"><a href="#2-localStorage" class="headerlink" title="2. localStorage"></a>2. localStorage</h3><pre><code>在 HTML5 规范中作为持久保存客户端数据的方案取代了globalStorage(以域作为访问规则), 要访问同一个 localStorage 对象, 页面必须来自同一个域名(子域名无效), 使用同一种协议, 在同一个端口上. 就相当于 globalStorage[location.host].
-</code></pre><ul>
+<p>由于每次客户端向服务器发送请求的时候都会发送这个 cookie , 所以最好每次设置的时候都用<code>encodeURI()</code>进行编码, <code>decodeURI()</code>来解码</p>
+<h3 id="2-localStorage"><a href="#2-localStorage" class="headerlink" title="2. localStorage"></a>2. localStorage</h3><p>在 HTML5 规范中作为持久保存客户端数据的方案取代了globalStorage(以域作为访问规则), 要访问同一个 localStorage 对象, 页面必须来自同一个域名(子域名无效), 使用同一种协议, 在同一个端口上. 就相当于 globalStorage[location.host].</p>
+<ul>
 <li><p>使用方法储存数据</p>
 <blockquote>
 <p>localStorage.setItem(‘name’, ‘Cara’)</p>
@@ -48,12 +47,12 @@
 <blockquote>
 <p>localStorage 和 sessionStorage 虽然也有数据储存大小限制, 但比 cookie 要大很多, 可以达到5M或更大. localStorage的数据始终有效, 即使浏览器关闭也会一直保存, 所以只要不 clear() 或者 removeItem() 数据就可以永久保存</p>
 </blockquote>
-<h3 id="3-sessionStorage"><a href="#3-sessionStorage" class="headerlink" title="3. sessionStorage"></a>3. sessionStorage</h3><pre><code>sessionStorage对象储存特定于某个会话的数据, 也就是说数据只保存到浏览器关闭.
-</code></pre><ul>
+<h3 id="3-sessionStorage"><a href="#3-sessionStorage" class="headerlink" title="3. sessionStorage"></a>3. sessionStorage</h3><p>sessionStorage对象储存特定于某个会话的数据, 也就是说数据只保存到浏览器关闭.</p>
+<ul>
 <li>sessionStorage的用法跟localStorage的用法一样</li>
 </ul>
-<h3 id="Storage类型"><a href="#Storage类型" class="headerlink" title="Storage类型"></a>Storage类型</h3><pre><code>Storage 类型提供最大的储存空间 ( 因浏览器而异 ) 来储存名值对儿, 有如下方法:
-</code></pre><ul>
+<h3 id="Storage类型"><a href="#Storage类型" class="headerlink" title="Storage类型"></a>Storage类型</h3><p>Storage 类型提供最大的储存空间 ( 因浏览器而异 ) 来储存名值对儿, 有如下方法:</p>
+<ul>
 <li><p>clear(): 删除所有值; ( Firefox 未实现 )</p>
 </li>
 <li><p>getItem(name): 根据指定的名字 name 获取对应的 value</p>

@@ -6,12 +6,12 @@
 <blockquote>
 <p>如何使用 Flex<br>任何一个容器都可以指定为一个 Flex 布局.  </p>
 </blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">display</span>: flex;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 行内元素 */</span></div><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">	<span class="attribute">display</span>: inline-flex;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 内核为 webkit 的浏览器 */</span></div><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">	<span class="comment">/* Safari */</span></div><div class="line">	<span class="attribute">display</span>: -webkit-flex;</div><div class="line">	<span class="attribute">display</span>: flex;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 行内元素 */</span></span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">	<span class="attribute">display</span>: inline-flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 内核为 webkit 的浏览器 */</span></span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">	<span class="comment">/* Safari */</span></span><br><span class="line">	<span class="attribute">display</span>: -webkit-flex;</span><br><span class="line">	<span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>设定 Flex布局之后的子元素<code>float</code>/ <code>clear</code>/ <code>vertical-align</code>都将失效.</p>
 <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>所有采用 Flex 布局的的元素都称为 Flex 容器, 它的所有资源都为 Flex 容器的容器成员, 成为 Flex 项目.<br>Flex 容器都存在两根轴: 水平的主轴(main axis)和垂直的交叉轴(cross axis), 项目默认沿主轴排列. 每个项目占主轴的空间称为<code>main size</code>, 占交叉轴的空间称为<code>cross size</code>.</p>
 <h4 id="Flex-容器的属性"><a href="#Flex-容器的属性" class="headerlink" title="Flex 容器的属性"></a>Flex 容器的属性</h4><ul>
 <li><p>flex-direction<br>项目排列在主轴的方向 </p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>row: 默认值, 主轴为水平方向, 起点为左边</li>
 <li>row-reverse: 主轴为水平方向, 起点为右边</li>
@@ -20,7 +20,7 @@
 </ul>
 </li>
 <li><p>flex-wrap<br>项目在主轴上的换行方式</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>nowrap: 默认值, 不换行</li>
 <li>wrap: 换行, 第一行在上面</li>
@@ -30,10 +30,10 @@
 <li><p>flex-flow<br>该属性为<code>flex-direction</code>和<code>flex-wrap</code>的缩写, 默认值为<code>row nowrap</code></p>
 </li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">flex-flow</span>: flex-direction || flex-wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">flex-flow</span>: flex-direction || flex-wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>justify-content<br>项目在主轴上的对齐方式, 所以它的对齐方式跟轴的方向有关</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">justify-content</span>: flex-start | center | space-around | space-between | flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">justify-content</span>: flex-start | center | space-around | space-between | flex-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>flex-start: 默认值, 左对齐</li>
 <li>center: 居中</li>
@@ -43,7 +43,7 @@
 </ul>
 </li>
 <li><p>align-items<br>项目在交叉轴在的对齐方式, 与交叉轴方向有关</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">align-items</span>: flex-start | center | baseline | stretch | flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">align-items</span>: flex-start | center | baseline | stretch | flex-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>flex-start: 交叉轴起点对齐</li>
 <li>center: 居中</li>
@@ -53,7 +53,7 @@
 </ul>
 </li>
 <li><p>align-content<br>多根轴线对齐方式. 如果项目只有一根轴线, 该属性则不起作用. 跟<code>align-items</code>容易混淆, 区别在于 <code>align-content</code>项目有多行时起作用, 而<code>align-items</code>项目单行就可起作用.</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">	<span class="attribute">align-content</span>: flex-start | center | space-around | space-between | stretch | flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">	<span class="attribute">align-content</span>: flex-start | center | space-around | space-between | stretch | flex-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>flex-start: 交叉轴对齐方式</li>
 <li>center: 居中</li>
@@ -65,26 +65,26 @@
 </ul>
 <h4 id="Flex-项目属性"><a href="#Flex-项目属性" class="headerlink" title="Flex 项目属性"></a>Flex 项目属性</h4><ul>
 <li><p>order<br>定义项目的排列顺序, 数值越小越靠前, 默认为0</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">	<span class="attribute">order</span>: &lt;number&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">order</span>: &lt;number&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>flex-grow<br>定义项目的放大比例, 默认为0(有剩余空间也不放大). 如果所有项目都为1, 它们将等分剩余空间; 如果其中一个项目为2, 其它项目为1, 那么属性为2的项目占据的剩余空间将比属性为1的项目大一倍</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">	<span class="attribute">flex-grow</span>: &lt;number&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">flex-grow</span>: &lt;number&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>flex-shrink<br>定义项目的缩小比例, 默认为1(如果空间不足, 将缩小). 如果所有项目都为1, 当空间不足时, 所有项目都将等比例缩小; 如果其中一个项目为0, 其它项目为1, 那么当空间不足时, 前者将不缩小</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">	<span class="attribute">flex-shrink</span>: &lt;number&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">flex-shrink</span>: &lt;number&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>flex-basis<br>定义属性在分配多余空间之前项目占据的主轴空间(main size). 浏览器会根据这个属性计算是否有多于空间. 默认值为 auto(项目本身的大小). 如果不使用<code>box-sizing</code>来改变盒模型的话, 该属性将决定项目的内容盒(content-box)的宽或者高(宽或高取决于主轴的方向).</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">	<span class="comment">/* size 的单位可以为 px/ em/rem 百分比都行(负值无效) */</span></div><div class="line">	<span class="attribute">flex-basis</span>: &lt;size&gt; | &lt;content&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">	<span class="comment">/* size 的单位可以为 px/ em/rem 百分比都行(负值无效) */</span></span><br><span class="line">	<span class="attribute">flex-basis</span>: &lt;size&gt; | &lt;content&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>size: 跟宽高设置一样, 不多说.</li>
 <li>content: css3 的几个 width 新属性. fill-available/ max-content/ min-content/ fit-content, 兼容性 IE 不支持.</li>
 </ul>
 </li>
 <li><p>flex<br>该属性为<code>flex-grow</code>/<code>flex-shrink</code>和<code>flex-basis</code>的缩写, 默认值为 <code>0 1 auto</code>, 后两个属性可选</p>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">	<span class="attribute">flex</span>: none | flex-grow flex-shrink flex-basis</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">	<span class="attribute">flex</span>: none | flex-grow flex-shrink flex-basis</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>align-self<br>允许单个项目与其他项目有不同的对齐方式, 可覆盖<code>align-items</code>属性, 默认值为 auto, 继承父级元素的<code>align-items</code>属性, 没有的话等同于<code>stretch</code></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">	align-self: auto | flex-start | center | stretch | baseline | flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">	align-self: auto | flex-start | center | stretch | baseline | flex-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>除了 <code>auto</code>以外其他属性值跟<code>align-items</code>一样就不再重复了.</p>
